@@ -1,6 +1,6 @@
 build
-.vscode
-docs
-rosbag_eva
+.vscode/
+docs/
+rosbag_eva/
 
 .build
