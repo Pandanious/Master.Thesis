@@ -1,6 +1,8 @@
 # Person Tracking
 
-panda@uni-bielefeld.de
+soham_panda@yahoo.com
+
+Access to University has lapsed. This exists to showcase the project and not the functioning presently.
 
 Laser and Camera based Person Tracker.
 
