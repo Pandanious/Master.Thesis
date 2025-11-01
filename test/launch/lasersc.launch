@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="test" type="scanread.py" name="scan_value" output="screen">
+    </node>
+</launch>

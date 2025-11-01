@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/vol/tiago//melodic-clf-nightly/lib/python2.7/dist-packages",
+        "/vol/tiago/melodic-clf-nightly/lib/python2.7/dist-packages",
+        "/vol/tiago//melodic-sim/lib/python2.7/dist-packages",
+        "/vol/tiago/melodic-sim/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/vol/tiago//melodic-clf-nightly/lib/python2.7/dist-packages",
+        "/vol/tiago/melodic-clf-nightly/lib/python2.7/dist-packages",
+        "/vol/tiago//melodic-sim/lib/python2.7/dist-packages",
+        "/vol/tiago/melodic-sim/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}

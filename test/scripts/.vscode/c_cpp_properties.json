@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/panda/Img_Laser/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/panda/RDTK/vol/melodic-sim/include/**",
+        "/home/panda/Img_Laser/src/Try.Plugin/src/gazebo_sim_walk/include/**",
+        "/home/panda/Img_Laser/src/rc-sim/rcsim_task_plugins/rcsim_task_carry_my_luggage/include/**",
+        "/home/panda/Img_Laser/src/rc-sim/rcsim_task_core/include/**",
+        "/home/panda/Img_Laser/src/rc-sim/rcsim_task_plugins/rcsim_task_storing_groceries/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

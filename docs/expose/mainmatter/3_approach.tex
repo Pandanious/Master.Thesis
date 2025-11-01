@@ -1,0 +1,101 @@
+\chapter{Approach}\label{chp:approach}
+
+\todo[inline]{chapter could be more concise}
+
+The initial approach is based on a paper ~\cite[]{inbook}, which deals with a weight carrying robot and its movement based on the person tracked. 
+
+\todo[inline]{can add subsection: dataset: describe needed datasets, simulated and real etc}
+
+\section{Data-set}
+The data for the experiments conducted will be provided through two primary methods.
+\begin{enumerate}
+	\item Through simulation data provided by Gazebo.
+	\begin{itemize}
+	\item Firstly, a generic scene will be composed, which can be replicated within the lab facilities which are present. The 3D models those approximate to furniture in the lab environment present in Gazebo will be used.
+	\item This project will use simulation data, which is recorded by the sensors in Gazebo.
+	\end{itemize}
+	\item Through the recording of similar scenarios using the Tiago robot.
+	\begin{itemize}
+	\item The experimental set-ups created within Gazebo will be recreated.
+	\item Recordings of tentative cases(mentioned below) will be made.
+		\end{itemize}
+\end{enumerate}
+
+We assume that at start time, the person directly in front of the sensors is our tracking object. As the individual is walking away from the sensor array, the objective is to include occlusion (such as another person walking in between the line of sight, other cases will be devised) and observe if the tracking holds. The laser range finder data is used as the primary tracking method under this implementation, where the data from the RBG camera is used to reinforce the tracking efficacy of the system.
+To set up the different tracking methods, using both the RGB-Depth camera and the LRF, a setup will be created in Gazebo. Trackers such as MIL, MOSSE. This will be supplemented by the data from the Kinect, a 2D image of scene with the person in front of it.
+
+This will involve:
+
+\begin{itemize}
+    \item The transformation of the laser data points to create a ‘curve’ (2D Image) of the person standing start time. 
+    \item Upon which MIL tracking methods will be initialized to create a region of interest rectangle. 
+    \item The RBG camera data serve as another 2D image on which the laser tracking data will be projected upon. 
+    \item Along with the reinforcement of the RBG camera data with the LRF data MIL and MOSSE tracking methods will be initialized.
+    \end{itemize}
+
+A further implementation is the deep learning-based tracking of multiple objects through YOLO and DeepSORT. Here even though it is a method used for multi object tracking, it deals with point clouds and the re-identification of object target once it is occluded, making it a good case for our project. The 2D laser data will be used to support the tracking object identified with the help of the 3D point cloud. The trackers used for the laser data would be KCF, MIL and an implementation of DeepSORT for the point could. 
+
+The ‘fusion’ of sensor data will be thought of. For the first implementation, it is like the method used by ref paper (1). In the other case, the actual way to incorporate both data sets to create a successful tracking algorithm will be devised. This is provided through Bayes tracker.
+
+This prototype will provide a good starting goal. It will be easy to run the algorithms created for Gazebo simulation in the real world as well. Different cases will be tried, and results will be demonstrated.  
+
+
+\section{Equipment Used}
+The equipment at the university lab includes a Tiago robot, which has a Kinect as an RGB-Depth sensor located where the ‘head’ of the robot is and an LRF located close to the ground. The Robot Operating System is what Tiago runs on; this is what will be used to provide data from the sensors.  
+
+
+
+
+
+
+
+\section{Tentative cases}
+\todo[inline]{think about which features the tracker has. e.g. reinitialization after lost tracking and scenario to test this e.g. move around corner}
+\begin{enumerate}
+\item Robot following human down a straight line. 
+    \begin{itemize} 
+	    \item Evaluate the efficacy with no interruptions, just the scene and the target object.
+	    \item Introduce occlusion to the scene, between the field of view of the sensors and the object tracked. 
+	    \item 
+    \end{itemize}
+
+\item Robot following human who walks straight initially then turns to the left or right.\todo{remove indepth explanation, add occlusion etc. as list items}
+    \begin{itemize}
+    	\item Induce the loss of tracking object from the FOV, forcing reinitalisation of tracked object
+    \end{itemize} 
+\item Introduce similar objects into the FOV of the sensors. 
+    \begin{itemize}
+        \item Other legs with similar orientation
+        \item Other objects with similar LRF profiles.
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+\section{Schedule}
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+
+Task & Completion Date \\
+\hline
+Handing in of Expose & 21st August\\
+\hline
+Start of creation of prototype in Gazebo.  &    22nd August             \\
+\hline
+Initialization of LRF based tracker on the generated curves from laser scan data.     &      29th August       \\
+\hline
+Initialization of camera based tracker for the experimental setup.     &     5th September            \\
+\hline
+Evaluation of tracking approach with simulation data.    &                 \\
+\hline
+Different scenarios for tracking situations recorded.     &                 \\
+\hline
+Evaluation of tracking approach with synthetic data.     &                 \\
+\hline
+Other approach algorithms implemented after successful first algorithm & \\
+\hline
+\end{tabular}
+\end{center}

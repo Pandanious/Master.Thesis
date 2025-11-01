@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <!-- <env name="GAZEBO_MODEL_DATABASE_URI" value="" /> -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find rcsim_gazebo)/models:$(find gazebo_ycb)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find rcsim_gazebo)/media:$(optenv GAZEBO_RESOURCE_PATH)"/>
+
+  <env name="QT_AUTO_SCREEN_SCALE_FACTOR" value="0"/>
+  <env name="QT_SCREEN_SCALE_FACTORS" value="[1.0]"/>
+
+  <!-- start gazebo client -->
+  <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false"
+        output="screen" args="--verbose" />
+
+</launch>

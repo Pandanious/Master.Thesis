@@ -1,0 +1,35 @@
+$pdf_previewer = "start okular";
+
+add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
+add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
+
+sub run_makeglossaries {
+    my ($base_name, $path) = fileparse( $_[0] ); #handle -outdir param by splitting path and file, ...
+    pushd $path; # ... cd-ing into folder first, then running makeglossaries ...
+
+    if ( $silent ) {
+        system "makeglossaries -q '$base_name'"; 
+    }
+    else {
+        system "makeglossaries '$base_name'"; 
+    };
+
+    popd; # ... and cd-ing back again
+}
+
+add_cus_dep('glo', 'gls', 0, 'run_makeindex');
+add_cus_dep('acn', 'acr', 0, 'run_makeindex');
+sub run_makeindex {
+    my ($base_name, $path) = fileparse( $_[0] ); #handle -outdir param by splitting path and file, ...
+    pushd $path; # ... cd-ing into folder first, then running makeglossaries ...
+    my $dest = $$Pdest;
+
+    if ( $silent ) {
+        system "makeindex -q -o \"$dest\" '$base_name'"; 
+    }
+    else {
+        system "makeindex -o \"$dest\" '$base_name'"; 
+    };
+
+    popd; # ... and cd-ing back again
+}

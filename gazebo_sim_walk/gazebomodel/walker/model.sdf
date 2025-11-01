@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+
+ <actor name="walker">
+      <pose> 2 4 1.05 0 0 -1.57</pose>
+      <skin>
+   	<filename>/home/panda/Thesis.Person/ma-person-tracking/Try.Plugin/src/gazebo_sim_walk/gazebomodel/walker/walk.dae</filename>
+      </skin>
+      <animation name="walking">
+   	<filename>/home/panda/Thesis.Person/ma-person-tracking/Try.Plugin/src/gazebo_sim_walk/gazebomodel/walker/walk.dae</filename>
+	<interpolate_x>true</interpolate_x>
+      </animation>
+  
+       
+     
+   <plugin name="operator_plugin" filename="libgazebo_sim_operator_plugin.so">
+        <animation_factor>1</animation_factor>
+	<z_offset>1.015</z_offset>
+        <pose> 2 4 1.015 1.57 0 0 </pose>
+        <robotNamespace>operator</robotNamespace>
+   </plugin>  
+           
+ </actor>  
+</sdf>
+

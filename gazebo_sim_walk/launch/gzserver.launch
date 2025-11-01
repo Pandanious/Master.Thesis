@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="world_path" default="$(find gazebo_sim_walk)/worlds"/>
+  <arg name="world" default="test"/>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="physics" default="ode"/>
+
+  <arg name="use_clock_frequency" default="false"/>
+  <arg name="pub_clock_frequency" default="100"/>
+
+  
+  <!-- <env name="GAZEBO_MODEL_DATABASE_URI" value="" /> -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find gazebo_sim_walk)/gazebomodel:$(find gazebo_ycb)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find gazebo_sim_walk)/media:$(optenv GAZEBO_RESOURCE_PATH)"/>
+
+  <env name="LC_NUMERIC" value="C" />
+
+  <!-- Config handling -->
+  <group if="$(arg use_sim_time)">
+    <param name="/use_sim_time" value="true" />
+  </group>
+
+  <arg unless="$(arg paused)" name="command_arg1" value=""/>
+  <arg     if="$(arg paused)" name="command_arg1" value="-u"/>
+
+  <group if="$(arg use_clock_frequency)">
+    <param name="gazebo/pub_clock_frequency" value="$(arg pub_clock_frequency)" />
+  </group>
+
+
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" output="screen"
+    args="$(arg command_arg1) -e $(arg physics) $(arg world_path)/$(arg
+          world).world --verbose"
+  />
+
+</launch>

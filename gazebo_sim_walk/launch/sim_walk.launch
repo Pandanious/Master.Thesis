@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <include file="$(find gazebo_sim_walk)/launch/gzserver.launch">
+      <arg name="world" value="TrialWorld"/>
+    </include>
+
+    <include file="$(find gazebo_sim_walk)/launch/gzclient.launch">
+    </include>
+</launch>

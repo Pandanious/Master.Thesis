@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>gazebo_sim_walk</name>
+  <version>0.0.1</version>
+  <description>
+    Modified version for the carry my luggage task.
+    Source https://github.com/DavidPL1/gazebo_ros_actor_cmd_plugin
+  </description>
+
+  <maintainer email="psteckstor@techfak.uni-bielefeld.de">Patric Steckstor</maintainer>
+
+  <license>Apache 2.0</license>
+
+  <author>David Leins</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>gazebo_dev</build_depend>
+  <build_depend>gazebo_plugins</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>rcsim_task_core</build_depend>
+  
+  <depend>roscpp</depend>
+  <exec_depend>gazebo_ros</exec_depend>
+
+</package>
