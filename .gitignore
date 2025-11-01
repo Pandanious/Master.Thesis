@@ -1,2 +1,6 @@
 build
+vscode
+docs
+rosbag_eva
+
 .build
